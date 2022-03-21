@@ -8,7 +8,13 @@ function authJwt() {
         isRevoked: isRevoked,
     }).unless({
         //exclude path to logged inn <3
-        path: [{ url: /\/api\/v1\/products(.*)/, methods: ['GET', 'OPTIONS'] }, { url: /\/api\/v1\/categories(.*)/, methods: ['GET', 'OPTIONS'] }, `${api}/users/login`, `${api}/users/register`],
+        path: [
+            { url: /\/public\/uploads(.*)/, methods: ['GET', 'OPTIONS'] },
+            { url: /\/api\/v1\/products(.*)/, methods: ['GET', 'OPTIONS'] },
+            { url: /\/api\/v1\/categories(.*)/, methods: ['GET', 'OPTIONS'] },
+            `${api}/users/login`,
+            `${api}/users/register`,
+        ],
     });
 }
 
